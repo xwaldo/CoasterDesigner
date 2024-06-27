@@ -1,72 +1,45 @@
+local Line = require(script.Parent.Parent.Components.Line)
+local TabMenu = require(script.Parent.Parent.Components.TabMenu)
 local Fusion = require(script.Parent.Parent.Packages.Fusion)
 local Settings = require(script.Parent.Parent.Settings)
+local PluginCoasterDropdown = require(script.Parent.PluginCoasterDropdown)
 
-return function(parent)
+return function(props)
+    local CurrentCoaster = props.CurrentCoaster
     local element = Fusion.New("Frame"){
-        Parent = parent,
         Size = UDim2.new(1,0,0,25),
         BackgroundTransparency = 1,
         [Fusion.Children] = {
-            
-            Fusion.New("Frame"){
-                LayoutOrder = 0,
-                BackgroundColor3 = Color3.fromHex("222222"),
-                Position = UDim2.fromScale(0,1),
-                AnchorPoint = Vector2.new(0,1),
-                Size = UDim2.new(1,0,0,1),
+            Fusion.New("ImageButton"){
+                LayoutOrder = 4,
+                BackgroundTransparency = 1,
+                AutoButtonColor = true,
+                Image = "http://www.roblox.com/asset/?id=12298448247",
+                AnchorPoint = Vector2.new(1,0.5),
+                Position = UDim2.new(1,-4,0.5,0),
+                Size = UDim2.new(0,20,0,20),
+                [Fusion.OnEvent("Activated")] = function()
+                
+                end
             },
-            Fusion.New("Folder"){
-                [Fusion.Children] = {
-                    Fusion.New("UIListLayout"){
-                        FillDirection = Enum.FillDirection.Horizontal,
-                        SortOrder = Enum.SortOrder.LayoutOrder, 
-                        Padding = UDim.new(0,5),
-                        VerticalAlignment = Enum.VerticalAlignment.Center
-                    }, 
-                    Fusion.New("Frame"){LayoutOrder = 0},
-
-                    Fusion.New("ImageLabel"){
-                        LayoutOrder = 1,
-                        BackgroundTransparency = 1,
-                        Image = "http://www.roblox.com/asset/?id=18214930989",
-
-                        Size = UDim2.new(0,20,0,20),
-                    },
-                    Fusion.New("TextLabel"){
-                        LayoutOrder = 2,
-                        Text = "Coaster Designer  ",
-                        Font = Enum.Font.SourceSansSemibold,
-                        TextXAlignment = Enum.TextXAlignment.Left,
-                        TextColor3 = Color3.new(1.000000, 1.000000, 1.000000),
-                        BackgroundTransparency = 1,
-                        --TextWrapped = true,
-                        TextTruncate = Enum.TextTruncate.SplitWord,
-                        Size = UDim2.new(0.3,0,1,-4),
-                        --AutomaticSize = Enum.AutomaticSize.X
-                    },
-                    Fusion.New("TextLabel"){
-                        LayoutOrder = 3,
-                        Text = "v"..Settings.Version,
-                        Font = Enum.Font.SourceSans,
-                        TextXAlignment = Enum.TextXAlignment.Left,
-                        TextColor3 = Color3.new(1.000000, 1.000000, 1.000000),
-                        BackgroundTransparency = 1,
-                        --TextWrapped = true,
-                        TextTruncate = Enum.TextTruncate.AtEnd,
-                        Size = UDim2.new(0,40,1,-4),
-                    },
-                    Fusion.New("ImageLabel"){
-                        LayoutOrder = 4,
-                        BackgroundTransparency = 1,
-                        Image = "http://www.roblox.com/asset/?id=18214930989",
-
-                        Size = UDim2.new(0,20,0,20),
-                    },
-                }
-            }
+            PluginCoasterDropdown{
+                CurrentCoaster = CurrentCoaster,
+                Position = UDim2.new(0,30,0.5,0),
+            },
+            Fusion.New("ImageLabel"){
+                LayoutOrder = 1,
+                BackgroundTransparency = 1,
+                Image = "http://www.roblox.com/asset/?id=18214930989",
+                Position = UDim2.new(0,4,0.5,0),
+                Size = UDim2.new(0,20,0,20),
+                AnchorPoint = Vector2.new(0,0.5),
+            },
+            
+            Line(),
             
         }
     }
+    
     return element
 end
 

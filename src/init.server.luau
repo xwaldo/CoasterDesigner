@@ -15,7 +15,7 @@ local toolbar = plugin:CreateToolbar(pluginName)
 local widgetInfo =  DockWidgetPluginGuiInfo.new(Enum.InitialDockState.Float, true)
 local widget = plugin:CreateDockWidgetPluginGui(pluginName, widgetInfo)
 widget.Name = pluginName
-widget.Title = pluginName
+widget.Title = pluginName.."  v"..Settings.Version
 widget.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 local button = toolbar:CreateButton("Launch Coaster Designer", "Open Coaster Designer", "http://www.roblox.com/asset/?id=18214930989")
