@@ -4,7 +4,7 @@ local Styles = require(script.Parent.Parent.Styles)
 local PluginHeader = require(script.Parent.PluginHeader)
 
 return function(widget)
-    local CurrentCoaster = Fusion.Value(nil)
+    local CurrentCoaster = Fusion.Value(true)
 
     local element = Fusion.New("Frame"){
         Parent = widget,
